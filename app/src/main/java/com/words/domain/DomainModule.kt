@@ -1,6 +1,8 @@
 package com.words.domain
 
 import com.words.domain.words.repository.TranslationRepository
+import com.words.domain.words.repository.WordsRepository
+import com.words.domain.words.usecase.ReadAllWordsUseCase
 import com.words.domain.words.usecase.TranslateWordUseCase
 import dagger.Module
 import dagger.Provides
@@ -15,4 +17,9 @@ object DomainModule {
     @Provides
     fun provideTranslateWordUseCase(repository: TranslationRepository): TranslateWordUseCase =
         TranslateWordUseCase(repository)
+
+    @Singleton
+    @Provides
+    fun provideReadALlWordsUseCase(repository: WordsRepository): ReadAllWordsUseCase =
+        ReadAllWordsUseCase(repository)
 }

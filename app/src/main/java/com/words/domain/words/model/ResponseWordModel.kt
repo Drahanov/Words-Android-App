@@ -1,6 +1,6 @@
 package com.words.domain.words.model
 
-data class WordEntity(
+data class ResponseWordModel(
     val exception_code: Any,
     val matches: List<Matche>,
     val mtLangSupported: Any,

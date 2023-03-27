@@ -11,6 +11,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.words.R
 import com.words.databinding.FragmentNewWordBinding
 import com.words.domain.category.model.CategoryEntity
+import com.words.domain.words.model.WordEntity
 import com.words.presentation.base.viewmodel.observeIn
 import com.words.presentation.newWord.model.NewWordModel
 import com.words.presentation.newWord.model.NewWordModel.NewWordUiSideEffect
@@ -57,10 +58,10 @@ class NewWordFragment : BottomSheetDialogFragment() {
     private fun initAdapters() {
         //mocked data
         val list = listOf(
-            CategoryEntity("", "Food", ""),
-            CategoryEntity("", "No category", ""),
-            CategoryEntity("", "Default", ""),
-            CategoryEntity("", "Professions", "")
+            CategoryEntity("", "Food", colorHex = 0xFF00FFFF),
+            CategoryEntity("", "No category", 0xFF00FFFF),
+            CategoryEntity("", "Default", 0xFF00FFFF),
+            CategoryEntity("", "Professions", 0xFF00FFFF)
         )
 
         val langs = listOf<String>(
@@ -78,7 +79,14 @@ class NewWordFragment : BottomSheetDialogFragment() {
 
     private fun initListeners() {
         binding.buttonConfirmNewWord.setOnClickListener {
-            viewModel.setEvent(NewWordUiEvent.AddNewWord(binding.editTextNewWord.text.toString()))
+            val newWord = WordEntity(
+                id = 0,
+                categoryId = 0,
+                languageId = 0,
+                word = binding.editTextNewWord.text.toString(),
+                translation = binding.editTextTranslationAre.text.toString()
+            )
+            viewModel.setEvent(NewWordUiEvent.AddNewWord(newWord))
         }
 
         binding.editTextNewWord.addTextChangedListener {
