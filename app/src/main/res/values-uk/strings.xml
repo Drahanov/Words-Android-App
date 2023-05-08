@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="input_new_word_here">нове слово ось тут</string>
+    <string name="translation_are">переклад...</string>
+    <string name="add_new_word">додати нове слово</string>
+    <string name="home">Головна</string>
+    <string name="settings">Налаштування</string>
+    <string name="quiz">Квіз</string>
+    <string name="statistics">Статистики</string>
+    <string name="search">пошук...</string>
+    <string name="manage_your_categories">керувати категоріями</string>
+    <string name="categories">Категорії</string>
+    <string name="add_new_category">додати нову категорію</string>
+    <string name="category_title">заголовок категорії</string>
+
+    <string name="isTargetsSelect">isTargetsSelectedSharedPreferences</string>
+    <string name="isNativeSelect">isNativeSelectedSharedPreferences</string>
+    <string name="confirm">підтвердити</string>
+    <string name="languages">Мови</string>
+    <string name="hint_native_lang">select your native language</string>
+    <string name="hint_target_langs">languages are you learning</string>
+</resources>

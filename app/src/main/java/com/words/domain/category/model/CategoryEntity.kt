@@ -1,7 +1,13 @@
 package com.words.domain.category.model
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+
+@Entity(tableName = "categories_table")
 data class CategoryEntity(
-    val id: String,
+    @PrimaryKey(autoGenerate = true)
+    val id: Int,
     val title: String,
-    val colorHex: Long
+    val colorHex: Long,
+    var isSelectedForQuiz: Boolean = false
 )

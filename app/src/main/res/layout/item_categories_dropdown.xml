@@ -7,26 +7,24 @@
     android:orientation="horizontal"
     android:padding="8dp">
 
-    <View
+    <ImageView
         android:id="@+id/viewColor"
+        android:padding="10dp"
         android:layout_width="15dp"
         android:layout_height="15dp"
-        android:layout_marginRight="3dp"
-        android:background="@drawable/background_edit_text"
-        android:backgroundTint="#FFC107"
-        android:contentDescription="@string/app_name" />
+        android:layout_marginRight="3dp" />
 
     <TextView
         android:id="@+id/textViewTitle"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="center"
+        android:ellipsize="end"
         android:fontFamily="sans-serif-black"
         android:gravity="center"
-        android:singleLine="true"
-        android:ellipsize="end"
-        android:textColor="@color/sonic_silver"
         android:includeFontPadding="false"
+        android:singleLine="true"
         android:text="Food"
+        android:textColor="@color/sonic_silver"
         android:textSize="14sp" />
 </LinearLayout>

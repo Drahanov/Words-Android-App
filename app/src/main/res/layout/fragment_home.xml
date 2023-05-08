@@ -4,93 +4,85 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#f9ffff"
+    android:background="#ffffff"
+    android:focusableInTouchMode="true"
     tools:context=".presentation.home.view.HomeFragment">
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/layoutSearch"
+
+    <EditText
+        android:id="@+id/editTextSearch"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="15dp"
+        android:layout_marginTop="10dp"
         android:layout_marginEnd="15dp"
-        android:paddingStart="3dp"
-        android:paddingEnd="3dp"
+        android:background="@drawable/background_edit_text_search"
+        android:drawableEnd="@drawable/ic_search"
+        android:fontFamily="sans-serif-light"
+        android:hint="@string/search"
+        android:paddingStart="20dp"
+        android:paddingTop="10dp"
+        android:paddingEnd="20dp"
+        android:paddingBottom="10dp"
+        android:singleLine="true"
+        android:textColorHint="@color/sonic_silver"
+        android:textCursorDrawable="@null"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/editTextSearch"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/background_edit_text"
-            android:fontFamily="sans-serif-light"
-            android:hint="search..."
-            android:paddingStart="20dp"
-            android:paddingTop="10dp"
-            android:paddingBottom="10dp"
-            android:singleLine="true"
-            android:textColorHint="@color/sonic_silver"
-            android:textCursorDrawable="@null"
-            android:drawableEnd="@drawable/ic_search"
-            android:paddingEnd="20dp"
-            android:textSize="20sp" />
-
-
-    </com.google.android.material.textfield.TextInputLayout>
-
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.compose.ui.platform.ComposeView
         android:id="@+id/rvLanguages"
         android:layout_width="0dp"
-        android:visibility="gone"
         android:layout_height="wrap_content"
+        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@id/layoutSearch"
-        app:layout_constraintTop_toBottomOf="@id/layoutSearch" />
+        app:layout_constraintStart_toStartOf="@id/editTextSearch"
+        app:layout_constraintTop_toBottomOf="@id/editTextSearch" />
 
     <androidx.compose.ui.platform.ComposeView
         android:id="@+id/rvCategories"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@id/layoutSearch"
+        app:layout_constraintStart_toStartOf="@id/editTextSearch"
         app:layout_constraintTop_toBottomOf="@id/rvLanguages" />
 
     <androidx.compose.ui.platform.ComposeView
         android:id="@+id/rvWords"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        app:layout_constraintEnd_toEndOf="@id/layoutSearch"
-        app:layout_constraintStart_toStartOf="@id/layoutSearch"
-        app:layout_constraintTop_toBottomOf="@id/rvCategories" />
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/editTextSearch"
+        app:layout_constraintStart_toStartOf="@id/editTextSearch"
+        app:layout_constraintTop_toBottomOf="@+id/rvCategories" />
 
-    <Button
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/buttonNewWord"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:background="@drawable/button_shape"
+        android:layout_margin="14dp"
+        android:backgroundTint="@color/blueberry"
         android:fontFamily="sans-serif-black"
         android:padding="20dp"
+        android:src="@drawable/ic_check"
         android:text="@string/add_new_word"
         android:textAllCaps="false"
         android:textColor="@color/white"
+        app:borderWidth="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/imageNoData"
         android:layout_width="225dp"
         android:layout_height="225dp"
         android:src="@drawable/img_no_data"
         android:visibility="gone"
-        app:layout_constraintBottom_toTopOf="@+id/buttonNewWord"
+        app:layout_constraintBottom_toBottomOf="@+id/rvWords"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:src="@drawable/img_no_data" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextSearch" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

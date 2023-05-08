@@ -4,15 +4,19 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
+import android.widget.AdapterView.OnItemSelectedListener
 import android.widget.BaseAdapter
+import android.widget.ImageView
 import android.widget.TextView
 import com.words.R
 import com.words.domain.category.model.CategoryEntity
+import com.words.presentation.newWord.view.customview.CircleView
 
 
 class CategoriesDropDownAdapter(
     context: Context,
-    var dataSource: List<CategoryEntity>
+    var dataSource: List<CategoryEntity>,
 ) : BaseAdapter() {
 
     private val inflater: LayoutInflater =
@@ -31,15 +35,17 @@ class CategoriesDropDownAdapter(
         }
 
         vh.label.text = dataSource[position].title
+        vh.colorView.setImageDrawable(CircleView(dataSource[position].colorHex.toInt(), 10.0f));
         return view
     }
 
-    override fun getItem(position: Int): Any? {
+    override fun getItem(position: Int): CategoryEntity {
         return dataSource[position];
+
     }
 
     override fun getCount(): Int {
-        return dataSource.size;
+        return dataSource.size
     }
 
     override fun getItemId(position: Int): Long {
@@ -48,10 +54,11 @@ class CategoriesDropDownAdapter(
 
     private class ItemHolder(row: View?) {
         val label: TextView
+        val colorView: ImageView
 
         init {
-            label = row?.findViewById(R.id.textViewTitle) as TextView
+            colorView = row?.findViewById(R.id.viewColor) as ImageView
+            label = row.findViewById(R.id.textViewTitle) as TextView
         }
     }
-
 }

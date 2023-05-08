@@ -15,6 +15,7 @@ android {
         targetSdk 33
         versionCode 1
         versionName "1.0"
+        resourceConfigurations += ["en", "uk", "bg"]
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -63,6 +64,7 @@ dependencies {
 
     //Hilt
     implementation "com.google.dagger:hilt-android:2.44"
+    implementation 'androidx.work:work-runtime-ktx:2.8.1'
     kapt "com.google.dagger:hilt-compiler:2.44"
 
     //Compose
@@ -117,6 +119,10 @@ dependencies {
 
     // To use Kotlin annotation processing tool (kapt)
     kapt "androidx.room:room-compiler:$room_version"
+
+    implementation "me.saket.swipe:swipe:1.1.1"
+    implementation 'com.github.DanielMartinus:Stepper-Touch:1.0.1'
+
 }
 
 kapt {

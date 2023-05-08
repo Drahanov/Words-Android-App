@@ -2,11 +2,20 @@ package com.words.data
 
 import android.content.Context
 import androidx.room.Room
+import com.words.data.categories.dao.CategoriesDao
+import com.words.data.categories.repository.CategoriesRepositoryImpl
 import com.words.data.database.WordsDatabase
+import com.words.data.languages.dao.LanguagesDao
+import com.words.data.languages.repository.LanguagesRepositoryImpl
+import com.words.data.quiz.dao.QuizDao
+import com.words.data.quiz.repository.QuizRepositoryImpl
 import com.words.data.words.api.TranslationApi
 import com.words.data.words.dao.WordsDao
 import com.words.data.words.repository.TranslationRepositoryImpl
 import com.words.data.words.repository.WordsRepositoryImpl
+import com.words.domain.category.repository.CategoriesRepository
+import com.words.domain.languages.repository.LanguagesRepository
+import com.words.domain.quiz.repository.QuizRepository
 import com.words.domain.words.repository.TranslationRepository
 import com.words.domain.words.repository.WordsRepository
 import dagger.Module
@@ -45,9 +54,41 @@ object DataModule {
     fun provideWordsRepository(dao: WordsDao): WordsRepository =
         WordsRepositoryImpl(dao)
 
+    @Singleton
+    @Provides
+    fun provideCategoriesRepository(dao: CategoriesDao): CategoriesRepository =
+        CategoriesRepositoryImpl(dao)
+
+    @Singleton
+    @Provides
+    fun provideLanguagesRepository(dao: LanguagesDao): LanguagesRepository =
+        LanguagesRepositoryImpl(dao)
+
+
+    @Singleton
+    @Provides
+    fun provideQuizRepository(dao: QuizDao): QuizRepository =
+        QuizRepositoryImpl(dao)
+
     @Provides
     fun provideWordsDao(wordsDatabase: WordsDatabase): WordsDao {
         return wordsDatabase.wordsDao()
+    }
+
+    @Provides
+    fun provideQuizDao(wordsDatabase: WordsDatabase): QuizDao {
+        return wordsDatabase.quizDao()
+    }
+
+
+    @Provides
+    fun provideCategoriesDao(wordsDatabase: WordsDatabase): CategoriesDao {
+        return wordsDatabase.categoriesDao()
+    }
+
+    @Provides
+    fun provideLanguagesDao(wordsDatabase: WordsDatabase): LanguagesDao {
+        return wordsDatabase.languagesDao()
     }
 
     @Provides
@@ -56,7 +97,8 @@ object DataModule {
         return Room.databaseBuilder(
             appContext,
             WordsDatabase::class.java,
-            "words_database"
-        ).build()
+            "words"
+        ).createFromAsset("database/words.db").build()
     }
+
 }

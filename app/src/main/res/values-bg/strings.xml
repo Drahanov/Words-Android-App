@@ -1,0 +1,34 @@
+<resources>
+    <string name="app_name">Думи</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="input_new_word_here">Въведи нова дума</string>
+    <string name="translation_are">преводът е...</string>
+    <string name="add_new_word">добави нова дума</string>
+    <string name="home">Начало</string>
+    <string name="settings">Настройки</string>
+    <string name="quiz">Куиз</string>
+    <string name="statistics">Статистики</string>
+    <string name="search">търсене...</string>
+    <string name="manage_your_categories">промени категориите си</string>
+    <string name="categories">Категории</string>
+    <string name="add_new_category">добави нова категория</string>
+    <string name="category_title">заглавие на категорията</string>
+
+    <string name="isTargetsSelect">isTargetsSelectedSharedPreferences</string>
+    <string name="isNativeSelect">isNativeSelectedSharedPreferences</string>
+    <string name="currentLanguage">currentLanguageSharedPreferences</string>
+
+    <string name="confirm">потвърди</string>
+    <string name="languages">Езици</string>
+    <string name="hint_native_lang">избери твоя роден език</string>
+    <string name="hint_target_langs">езици, които изучаваш</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="challange_yourself">предизвикай себе си</string>
+    <string name="start">започни</string>
+    <string name="all_for_your_convenience">за вашето удобство</string>
+    <string name="notifications">Известия</string>
+    <string name="manage_categories">Промени категориите</string>
+    <string name="language">Език</string>
+    <string name="donate">Дари</string>
+    <string name="privacy_policy">Политика за поверителност</string>
+</resources>

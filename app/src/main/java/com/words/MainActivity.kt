@@ -1,21 +1,32 @@
 package com.words
 
-import androidx.appcompat.app.AppCompatActivity
+import android.content.Context
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
-import androidx.activity.viewModels
-import androidx.fragment.app.viewModels
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.NotificationCompat
+import androidx.core.app.NotificationManagerCompat
+import androidx.navigation.findNavController
+import androidx.navigation.ui.setupWithNavController
+import androidx.work.Data
+import androidx.work.OneTimeWorkRequest
+import androidx.work.WorkManager
+import com.words.app.receiver.OneTimeScheduleWorker
 import com.words.databinding.ActivityMainBinding
-import com.words.presentation.base.viewmodel.observeIn
-import com.words.presentation.newWord.model.NewWordModel
-import com.words.presentation.newWord.view.NewWordFragment
-import com.words.presentation.newWord.viewmodel.NewWordViewModel
+import com.words.presentation.targets.view.TargetsFragment
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.flow.onEach
+import java.util.concurrent.TimeUnit
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
+
+
+    @Inject
+    lateinit var notificationBuilder: NotificationCompat.Builder
+
+    @Inject
+    lateinit var notificationManager: NotificationManagerCompat
 
     private lateinit var binding: ActivityMainBinding
 
@@ -25,5 +36,19 @@ class MainActivity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
         getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR)
+
+        binding.bottomNavigationView.setupWithNavController(findNavController(R.id.fragmentContainerView))
+
+        notificationManager.notify(1, notificationBuilder.build())
+        val sharedPref = this.getPreferences(Context.MODE_PRIVATE)
+        val isNativeSeleted = sharedPref.getBoolean(getString(R.string.isNativeSelect), false)
+
+        if (!isNativeSeleted) {
+            TargetsFragment().show(
+                supportFragmentManager, ""
+            )
+        }
+
     }
+
 }

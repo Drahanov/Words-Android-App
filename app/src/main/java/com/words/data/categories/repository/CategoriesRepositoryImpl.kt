@@ -17,4 +17,11 @@ class CategoriesRepositoryImpl @Inject constructor(private val categoriesDao: Ca
         categoriesDao.addCategory(category)
     }
 
+    override suspend fun deleteCategory(category: CategoryEntity) {
+        categoriesDao.deleteCategory(category = category)
+    }
+
+    override suspend fun updateCategory(category: CategoryEntity) {
+        categoriesDao.updateCategory(category = category)
+    }
 }

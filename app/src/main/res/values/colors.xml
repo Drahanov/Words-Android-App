@@ -9,5 +9,6 @@
     <color name="white">#FFFFFFFF</color>
     <color name="blueberry">#6078F3</color>
     <color name="blue_purple">#99A7EF</color>
+    <color name="blue_purple_light">#FFDEE5FF</color>
     <color name="sonic_silver">#787676</color>
 </resources>

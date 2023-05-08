@@ -7,4 +7,6 @@ import kotlinx.coroutines.flow.Flow
 interface CategoriesRepository {
     suspend fun readAllCategories(): Flow<List<CategoryEntity>>
     suspend fun addCategory(category: CategoryEntity)
+    suspend fun deleteCategory(category: CategoryEntity)
+    suspend fun updateCategory(category: CategoryEntity)
 }
