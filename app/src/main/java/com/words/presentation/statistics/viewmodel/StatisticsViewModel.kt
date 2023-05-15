@@ -1,8 +1,6 @@
 package com.words.presentation.statistics.viewmodel
 
 import androidx.lifecycle.viewModelScope
-import com.words.domain.quiz.model.QuizEntity
-import com.words.domain.quiz.repository.QuizRepository
 import com.words.domain.words.model.WordEntity
 import com.words.domain.words.usecase.ReadAllWordsUseCase
 import com.words.presentation.base.viewmodel.BaseViewModel
@@ -17,7 +15,6 @@ import javax.inject.Inject
 @HiltViewModel
 class StatisticsViewModel @Inject constructor(
     private val readAllWordsUseCase: ReadAllWordsUseCase,
-    private val quizRepository: QuizRepository
 ) :
     BaseViewModel<StatisticsUiState, StatisticsUiEvent, StatisticsUiEffect>(
         StatisticsUiState()
@@ -51,16 +48,6 @@ class StatisticsViewModel @Inject constructor(
                 }
             }
         }
-
-        viewModelScope.launch(Dispatchers.IO) {
-            listOfQuizes().collect() {
-                setState {
-                    copy(
-                        quizes = it
-                    )
-                }
-            }
-        }
     }
 
     override suspend fun handleEvent(event: StatisticsUiEvent) {
@@ -68,8 +55,4 @@ class StatisticsViewModel @Inject constructor(
 
     private suspend fun listOfWords(): Flow<List<WordEntity>> =
         readAllWordsUseCase.invoke()
-
-    private suspend fun listOfQuizes(): Flow<List<QuizEntity>> =
-        quizRepository.readAllQuizes()
-
 }

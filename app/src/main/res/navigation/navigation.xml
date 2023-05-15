@@ -47,23 +47,4 @@
         android:name="com.words.presentation.statistics.view.StatisticsFragment"
         android:label="StatisticsFragment"
         tools:layout="@layout/fragment_statistics"/>
-    <fragment
-        android:id="@+id/quizFragment"
-        android:name="com.words.presentation.quiz.view.QuizFragment"
-        android:label="fragment_quiz"
-        tools:layout="@layout/fragment_quiz" />
-    <dialog
-        android:id="@+id/resultFragment"
-        android:name="com.words.presentation.quiz.view.ResultFragment"
-        android:label="fragment_result"
-        tools:layout="@layout/fragment_result" />
-    <fragment
-        android:id="@+id/questionFragment2"
-        android:name="com.words.presentation.question.view.QuestionFragment"
-        android:label="fragment_question"
-        tools:layout="@layout/fragment_question" >
-        <action
-            android:id="@+id/questionToResult"
-            app:destination="@id/resultFragment" />
-    </fragment>
 </navigation>
