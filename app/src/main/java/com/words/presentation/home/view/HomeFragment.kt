@@ -31,7 +31,6 @@ import com.words.presentation.home.view.components.words.WordsList
 
 @AndroidEntryPoint
 class HomeFragment : Fragment() {
-
     private val viewModel: HomeViewModel by viewModels()
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
@@ -110,10 +109,21 @@ class HomeFragment : Fragment() {
     }
 
     private fun onHandleState(state: HomeUiState) {
-        if (state.words.isEmpty()) {
+        if (state.words.isEmpty() && !state.isLoading) {
             binding.imageNoData.visibility = View.VISIBLE
         } else {
             binding.imageNoData.visibility = View.GONE
         }
+        if (state.isLoading) {
+            binding.progress.visibility = View.VISIBLE
+        } else {
+            initComposeView()
+            binding.progress.visibility = View.GONE
+        }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

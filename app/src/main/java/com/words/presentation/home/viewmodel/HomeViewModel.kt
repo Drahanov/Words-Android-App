@@ -11,6 +11,8 @@ import com.words.presentation.base.viewmodel.BaseViewModel
 import com.words.presentation.home.model.HomeModel.*
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.launch
 import java.util.*
@@ -24,21 +26,28 @@ class HomeViewModel @Inject constructor(
     private val wordLearnWordUseCase: LearnWordUseCase
 ) : BaseViewModel<HomeUiState, HomeUiEvent, HomeUiSideEffect>(HomeUiState()) {
 
+    private lateinit var categoriesJob: Job
+    private lateinit var wordsJob: Job
+
     init {
-        viewModelScope.launch(Dispatchers.IO) {
+        setState {
+            copy(isLoading = true)
+        }
+        wordsJob = viewModelScope.launch(Dispatchers.IO) {
             listOfWords().collect() {
                 setState {
-                    copy(words = it)
+                    copy(words = it, isLoading = categoriesJob.isCompleted)
                 }
             }
         }
 
-        viewModelScope.launch(Dispatchers.IO) {
+        categoriesJob = viewModelScope.launch(Dispatchers.IO) {
             listOfCategories().collect() {
                 setState {
-                    copy(categories = it)
+                    copy(categories = it, isLoading = wordsJob.isCompleted)
                 }
             }
+
         }
     }
 
@@ -64,6 +73,7 @@ class HomeViewModel @Inject constructor(
             is HomeUiEvent.RemoveWord -> {
                 repository.removeWord(event.word)
             }
+
             is HomeUiEvent.WordLearned -> {
                 val learnedWord = event.word
                 learnedWord.isLearned = event.isChecked
