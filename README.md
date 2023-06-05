@@ -10,6 +10,8 @@ Built partially using the Jetpack Compose.
 
 The aim of is to show my abilities and use new for me, at the time of writing this text, libraries.
 
+**Project may be unstable and contain bugs as it is under development
+
 ## Contents
 
 - [Demonstration](#demonstration)
