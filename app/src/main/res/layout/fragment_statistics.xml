@@ -56,6 +56,7 @@
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginEnd="10dp"
+                    android:visibility="gone"
                     app:cardCornerRadius="10dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -73,7 +74,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_marginStart="10dp"
-                        android:layout_marginEnd="10dp" >
+                        android:layout_marginEnd="10dp">
 
                     </androidx.compose.ui.platform.ComposeView>
                 </androidx.cardview.widget.CardView>
